@@ -6,12 +6,10 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        cur = head
-
-        while cur:
-            if cur.val == inf:
+        while head:
+            if head.val == inf:
                 return True
-            cur.val = float('inf')
-            cur = cur.next
+            head.val = float('inf')
+            head = head.next
         
         return False
