@@ -1,12 +1,9 @@
-from collections import defaultdict
+from collections import Counter
 
 class Solution:
     def minDeletions(self, s: str) -> int:
-        frequency = defaultdict(int)
+        frequency = Counter(s)
         ans = 0
-
-        for ch in s:
-            frequency[ch] += 1
         
         freq_set = set()
         for val in frequency.values():
