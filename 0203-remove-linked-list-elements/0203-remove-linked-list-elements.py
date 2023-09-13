@@ -6,18 +6,13 @@ class ListNode:
 
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-      if head is None: return None
-      cur = pre = ListNode(0, head)
-      next = cur.next
+      start = ListNode(0, head)
+      cur = start
 
-      while next:
-        if next.val == val:
-          while next and next.val == val:
-            next = next.next
-          else:
-            cur.next = next
+      while cur.next:
+        if cur.next.val == val:
+          cur.next = cur.next.next
         else:
-          next = next.next
           cur = cur.next
 
-      return pre.next
+      return start.next
