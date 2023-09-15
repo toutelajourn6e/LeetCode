@@ -9,8 +9,6 @@ class Solution:
             return parents[x]
 
         def union(a, b):
-            a = find(a)
-            b = find(b)
             if a < b:
                 parents[b] = a
             else:
@@ -31,8 +29,10 @@ class Solution:
 
         for cost, a, b in edges:
             if cnt == len(points) - 1: break
-            if find(a) != find(b):
-                union(a, b)
+            a_parent = find(a)
+            b_parent = find(b)
+            if a_parent != b_parent:
+                union(a_parent, b_parent)
                 result += cost
                 cnt += 1
 
