@@ -27,10 +27,13 @@ class Solution:
                 edges.append((cost, i, j))
 
         edges.sort()
+        cnt = 0
 
         for cost, a, b in edges:
+            if cnt == len(points) - 1: break
             if find(a) != find(b):
                 union(a, b)
                 result += cost
+                cnt += 1
 
         return result
