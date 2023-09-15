@@ -1,6 +1,3 @@
-import sys
-sys.setrecursionlimit(10 ** 6)
-
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         def find(x):
