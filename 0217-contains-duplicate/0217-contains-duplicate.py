@@ -4,6 +4,5 @@ class Solution:
         for num in nums:
             if check.get(num) is None:
                 check[num] = True
-            else:
-                return True
+            else: return True
         return False 
