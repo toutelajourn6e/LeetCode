@@ -6,10 +6,12 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        while head:
-            if head.val == inf:
+        tortoise = hare = head
+        while tortoise != None and hare != None:
+            if hare.next is None:
+                return False
+            hare = hare.next.next
+            tortoise = tortoise.next
+            if hare == tortoise:
                 return True
-            head.val = float('inf')
-            head = head.next
-        
         return False
