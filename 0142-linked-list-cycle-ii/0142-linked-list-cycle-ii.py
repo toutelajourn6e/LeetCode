@@ -14,11 +14,9 @@ class Solution:
             hare = hare.next.next
             tortoise = tortoise.next
             if tortoise == hare:
-                break
-        else: return None
-
-        hare = head
-        while tortoise != hare:
-            tortoise = tortoise.next
-            hare = hare.next
-        return hare
+                hare = head
+                while tortoise != hare:
+                    tortoise = tortoise.next
+                    hare = hare.next
+                return hare
+        return None
