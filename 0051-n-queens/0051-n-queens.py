@@ -13,12 +13,15 @@ class Solution:
             for i in range(n):
                 bit = 1 << i
                 if impossible & bit: continue
+                
                 select = ''
                 for j in range(n):
                     if i == j: select += 'Q' 
                     else: select += '.'
+
                 path.append(select)
                 n_queen(row + 1, col | bit, left | bit, right | bit, path)
                 path.pop()
+
         n_queen(0, 0, 0, 0, [])
         return result
