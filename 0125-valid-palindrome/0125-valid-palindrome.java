@@ -1,16 +1,31 @@
-import java.util.*;
-
 class Solution {
     public boolean isPalindrome(String s) {
-        StringBuffer sb = new StringBuffer();
+        int start = 0;
+        int end = s.length() - 1;
 
-        for (char c : s.toLowerCase().toCharArray()) {
-            if (Character.isDigit(c) || Character.isLetter(c)) {
-                sb.append(c);
+        while (true) {
+            char s_char = s.charAt(start);
+            char e_char = s.charAt(end);
+
+            if (start >= end)
+                return true;
+    
+            if (!Character.isLetterOrDigit(s_char)) {
+                start += 1;
+                continue;
+            }
+
+            if (!Character.isLetterOrDigit(e_char)) {
+                end -= 1;
+                continue;
+            }
+
+            if (Character.toLowerCase(s_char) != Character.toLowerCase(e_char)) {
+                return false;
+            } else {
+                start += 1;
+                end -= 1;
             }
         }
-
-        // System.out.println(sb.toString() + "-----------" + sb.reverse().toString());
-        return sb.toString().equals(sb.reverse().toString());
     }
 }
