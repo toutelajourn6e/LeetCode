@@ -13,19 +13,17 @@ class Solution {
             }
         }
 
-        Collections.sort(letters, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                String[] o1Split = o1.split(" ", 2);
-                String[] o2Split = o2.split(" ", 2);
-                
-                int compareInt = o1Split[1].compareTo(o2Split[1]);
+        Collections.sort(letters, (o1, o2) -> {
 
-                if (compareInt == 0) {
-                    return o1Split[0].compareTo(o2Split[0]);
-                } else {
-                    return compareInt;
-                }
+            String[] o1Split = o1.split(" ", 2);
+            String[] o2Split = o2.split(" ", 2);
+
+            int compareInt = o1Split[1].compareTo(o2Split[1]);
+
+            if (compareInt == 0) {
+                return o1Split[0].compareTo(o2Split[0]);
+            } else {
+                return compareInt;
             }
         });
 
