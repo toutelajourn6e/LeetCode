@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public String[] reorderLogFiles(String[] logs) {
-        Deque<String> digits = new ArrayDeque<>();
+        List<String> digits = new ArrayList<>();
         List<String> letters = new ArrayList<>();
 
         for (String log : logs) {
@@ -27,9 +27,7 @@ class Solution {
             }
         });
 
-        while (!digits.isEmpty()) {
-            letters.add(digits.removeFirst());
-        }
+        letters.addAll(digits);
         
         return letters.toArray(new String[letters.size()]);
     }
