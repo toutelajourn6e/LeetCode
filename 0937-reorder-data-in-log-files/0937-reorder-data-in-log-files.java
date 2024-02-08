@@ -16,21 +16,15 @@ class Solution {
         Collections.sort(letters, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                String[] o1Split = o1.split(" ");
-                String[] o2Split = o2.split(" ");
+                String[] o1Split = o1.split(" ", 2);
+                String[] o2Split = o2.split(" ", 2);
+                
+                int compareInt = o1Split[1].compareTo(o2Split[1]);
 
-                for (int i = 1; i < Math.min(o1Split.length, o2Split.length); i++) {
-                    if (o1Split[i].compareTo(o2Split[i]) >= 1) {
-                        return 1;
-                    } else if (o1Split[i].compareTo(o2Split[i]) <= -1) {
-                        return -1;
-                    }
-                }
-
-                if (o1Split.length == o2Split.length) {
+                if (compareInt == 0) {
                     return o1Split[0].compareTo(o2Split[0]);
                 } else {
-                    return o1Split.length - o2Split.length;
+                    return compareInt;
                 }
             }
         });
