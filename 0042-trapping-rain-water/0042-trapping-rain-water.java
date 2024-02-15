@@ -1,28 +1,19 @@
 class Solution {
     public int trap(int[] height) {
-        int result = 0, store = 0, wallHeight = 0, wallIndex = 0;
+        int result = 0;
+        int left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0;
 
-        for (int i = 0; i < height.length; i++) {
-            if (height[i] >= wallHeight) {
-                wallHeight = height[i];
-                wallIndex = i;
-                result += store;
-                store = 0;
-            } else {
-                store += (wallHeight - height[i]);
-            }
-        }
+        while (left < right) {
+            leftMax = Math.max(height[left], leftMax);
+            rightMax = Math.max(height[right], rightMax);
 
-        if (store > 0) {
-            store = wallHeight = 0;
-            for (int i = height.length-1; i >= wallIndex; i--) {
-                if (height[i] >= wallHeight) {
-                wallHeight = height[i];
-                result += store;
-                store = 0;
+            if (leftMax <= rightMax) {
+                result += (leftMax - height[left]);
+                left++;
             } else {
-                store += (wallHeight - height[i]);
-            }
+                result += (rightMax - height[right]);
+                right--;
             }
         }
         return result;
