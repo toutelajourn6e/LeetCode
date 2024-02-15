@@ -11,8 +11,6 @@ class Solution {
             } else {
                 store += (wallHeight - height[i]);
             }
-            System.out.println("store-----" + store);
-            System.out.println("result-----" + result);
         }
 
         if (store > 0) {
@@ -25,8 +23,6 @@ class Solution {
             } else {
                 store += (wallHeight - height[i]);
             }
-            System.out.println("store-----" + store);
-            System.out.println("result-----" + result);
             }
         }
         return result;
