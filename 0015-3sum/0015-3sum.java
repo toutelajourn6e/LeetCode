@@ -8,7 +8,7 @@ class Solution {
         
         for (int i = 0; i < nums.length; i++) {
             int firstSelected = nums[i];
-            int left = 0, right = nums.length - 1;
+            int left = i, right = nums.length - 1;
 
             while (left < right) {
                 if (left == i) left++;
