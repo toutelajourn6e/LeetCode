@@ -2,33 +2,39 @@ import java.util.*;
 
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        Set<List<Integer>> result = new HashSet<>();
+        List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
 
+        int left, right;
+
         
-        for (int i = 0; i < nums.length; i++) {
-            int firstSelected = nums[i];
-            int left = i, right = nums.length - 1;
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i >= 1 && nums[i] == nums[i-1]) continue;
+
+            left = i + 1;
+            right = nums.length - 1;
 
             while (left < right) {
-                if (left == i) left++;
-                if (right == i) right--;
-                if (left == right || right >= nums.length) break;
+                int sum = nums[i] + nums[left] + nums[right];
 
-                if (firstSelected + nums[left] + nums[right] == 0) {
-                    List<Integer> arr = new ArrayList<>(Arrays.asList(firstSelected, nums[left], nums[right]));
-                    Collections.sort(arr);
-                    result.add(arr);
+                if (sum < 0) {
                     left++;
-                } else if (firstSelected + nums[left] + nums[right] < 0) {
-                    left++;
+                } else if (sum > 0) {
+                    right--;
                 } else {
+                    result.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[right])));
+
+                    while (left < right && nums[left] == nums[left+1])
+                        left++;
+                    
+                    while (left < right && nums[right] == nums[right-1])
+                        right--;
+
+                    left++;
                     right--;
                 }
             }
         }
-
-        List<List<Integer>> answer = new ArrayList<>(result);
-        return answer;
+        return result;
     }
 }
