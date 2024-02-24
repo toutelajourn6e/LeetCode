@@ -19,25 +19,28 @@ class Solution {
             slow = slow.next;
         }
 
-        if (fast != null) {
-            slow = slow.next;
-        }
+        ListNode prev = null;
+        ListNode temp = null;
 
-        ListNode rev = null;
+        prev = slow;
+        slow = slow.next;
+        prev.next = null;
         while (slow != null) {
-            ListNode next = slow.next;
-            slow.next = rev;
-            rev = slow;
-            slow = next;
+            temp = slow.next;
+            slow.next = prev;
+            prev = slow;
+            slow = temp;
         }
 
-        while (rev != null) {
-            if (rev.val != head.val) {
+        fast = head;
+        slow = prev;
+        while (slow != null) {
+            if (fast.val != slow.val) {
                 return false;
             }
 
-            rev = rev.next;
-            head = head.next;
+            fast = fast.next;
+            slow = slow.next;
         }
 
         return true;
