@@ -21,7 +21,6 @@ class Solution {
         }
 
         ListNode result = dummyHead.next;
-        dummyHead.next = null;
         return result;
     }
 }
