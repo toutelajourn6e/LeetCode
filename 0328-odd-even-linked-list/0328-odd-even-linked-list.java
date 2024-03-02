@@ -20,12 +20,9 @@ class Solution {
             odd.next = odd.next.next;
             odd = odd.next;
 
-            if (even.next.next != null) {
-                even.next = even.next.next;
-                even = even.next;
-            }
+            even.next = even.next.next;
+            even = even.next;
         }
-        even.next = null;
         odd.next = evenHead;
         return head;
     }
